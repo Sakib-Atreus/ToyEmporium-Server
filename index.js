@@ -8,10 +8,7 @@ const app = express();
 const port = process.env.PORT || 5007;
 
 app.use(cors());
-// const corsConfig = {
-//   origin: '*',
-// }
-// app.use(cors(corsConfig))
+
 app.use(express.json());
 console.log(process.env.DB_NAME);
 console.log(process.env.DB_PASS);
