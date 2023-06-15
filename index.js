@@ -42,11 +42,6 @@ app.get('/', (req, res) => {
 
     const toyCollection = client.db("toyDB").collection("toy");
 
-    // //index create
-    // const indexKeys = { name: 1 }; // Replace field1 and field2 with your actual field names
-    // const indexOptions = { title: "titleCategory" }; // Replace index_name with the desired index name
-    // const result = await toyCollection.createIndex(indexKeys, indexOptions);
-    // console.log(result);
     app.get('/searchText/:text', async (req, res) => {
       const text = req.params.text;
       const result = await toyCollection
