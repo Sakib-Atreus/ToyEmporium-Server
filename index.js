@@ -10,7 +10,6 @@ const port = process.env.PORT || 5007;
 app.use(cors());
 // const corsConfig = {
 //   origin: '*',
-//   credentials: true,
 // }
 // app.use(cors(corsConfig))
 app.use(express.json());
