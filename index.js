@@ -39,9 +39,7 @@ app.get('/', (req, res) => {
   res.send('Lets play with Toys')
 })
 
-// async function run() {
-//   try {
-//  await client.connect();
+
     const toyCollection = client.db("toyDB").collection("toy");
 
     // //index create
