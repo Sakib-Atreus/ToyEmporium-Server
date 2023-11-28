@@ -41,6 +41,8 @@ app.get('/', (req, res) => {
 
 
     const toyCollection = client.db("toyDB").collection("toy");
+    
+    const buyCollection = client.db("toyDB").collection("buyToy");
 
     app.get('/searchText/:text', async (req, res) => {
       const text = req.params.text;
@@ -126,6 +128,27 @@ app.get('/', (req, res) => {
         });
       }
     })
+
+    app.post('/buyNow', async (req, res) => {
+      const body = req.body;
+      console.log(body);
+      const result = await buyCollection.insertOne(body);
+      // res.send(result);
+      if (result?.insertedId) {
+        return res.status(200).send(result);
+      } else {
+        return res.status(404).send({
+          message: "can not insert try again later",
+          status: false,
+        });
+      }
+  });
+
+  app.get("/buyAll/:email", async (req, res) => {
+    console.log(req.params.email);
+    const result = await buyCollection.find({ email: req.params.email }).toArray();
+    res.send(result);
+  })
 
 
 
